@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>AI Assistant component (beta) | Sample | ArcGIS Maps SDK for JavaScript</title>
+    <!-- Load the ArcGIS Maps SDK for JavaScript from CDN -->
+    <script type="module" src="https://js.arcgis.com/5.0/"></script>
+  </head>
+
+  <body>
+    <calcite-shell>
+      <arcgis-map id="AV-Aargau" item-id="0faf0d5526e24edab9a5a0d81f4e423c">
+        <arcgis-zoom slot="top-left"></arcgis-zoom>
+        <arcgis-expand slot="top-left">
+          <arcgis-legend></arcgis-legend>
+        </arcgis-expand>
+      </arcgis-map>
+      <calcite-shell-panel slot="panel-end" width="l" id="assistant-panel">
+        <calcite-panel>
+          <arcgis-assistant
+            log-enabled
+            copy-enabled
+            reference-element="#AV-Aargau"
+            heading="AV Playground Demo"
+            description="Demo GeoSummit"
+            entry-message="Hello! Ich helfe dir Auskunft über die AV in Aargau zu finden.">
+            <arcgis-assistant-navigation-agent></arcgis-assistant-navigation-agent>
+            <arcgis-assistant-data-exploration-agent></arcgis-assistant-data-exploration-agent>
+            <arcgis-assistant-help-agent></arcgis-assistant-help-agent>
+          </arcgis-assistant>
+        </calcite-panel>
+      </calcite-shell-panel>
+    </calcite-shell>
+
+    <script type="module">
+      const assistantElement = document.querySelector("arcgis-assistant");
+      const mapElement = document.querySelector("arcgis-map");
+      assistantElement.suggestedPrompts = [
+        "Wie gross ist die Gemeinde Neuenhof?", 
+        "Wie gross ist die Waldfläche in Neuenhof?"
+        "Gib mir eine Liste aller Liegenschaften, die an die Liegenschaft CH178903796760 angrenzen."
+      ];
+    </script>
+  </body>
+</html>
